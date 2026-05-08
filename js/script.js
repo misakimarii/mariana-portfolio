@@ -51,3 +51,24 @@ window.addEventListener("load", () => {
 
   updateThemeButton();
 });
+
+const navLinks = document.querySelectorAll('a[href^="#"]');
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const targetId = link.getAttribute("href");
+
+    if (targetId === "#") return;
+
+    event.preventDefault();
+
+    const targetSection = document.querySelector(targetId);
+
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
+});
